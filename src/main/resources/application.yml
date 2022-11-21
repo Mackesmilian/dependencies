@@ -4,6 +4,11 @@ spring:
     username: user
     password: password
     driverClassName: org.h2.Driver
+  h2:
+    console.enabled: true
   jpa:
     database-platform: at.wold.dependencies.CustomH2Dialect
     defer-datasource-initialization: true
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl

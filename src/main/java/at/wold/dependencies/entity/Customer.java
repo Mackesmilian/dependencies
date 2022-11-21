@@ -1,5 +1,9 @@
 package at.wold.dependencies.entity;
 
+import at.wold.dependencies.View;
+import com.fasterxml.jackson.annotation.JsonView;
+import org.hibernate.annotations.Formula;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
@@ -8,10 +12,13 @@ import java.util.List;
 public class Customer {
     @Id
     private Integer id;
+    @JsonView({View.Public.Info.class, View.Public.Balance.class})
     private String name;
+    @JsonView(View.Public.Info.class)
     private String address;
     private LocalDate dateOfBirth;
     private String email;
+    @JsonView(View.Public.Info.class)
     private Boolean statusFl;
 
     @ManyToMany(targetEntity = FinancialProduct.class, cascade = { CascadeType.ALL })
@@ -19,6 +26,11 @@ public class Customer {
             joinColumns = { @JoinColumn(name = "customerId") },
             inverseJoinColumns = { @JoinColumn(name = "financialProductId") })
     private List<FinancialProduct> financialProducts;
+
+    @Formula(value = "select sum(f.balance) from customerFinancialProduct f where f.customerId = " +
+            "id")
+    @JsonView({View.Public.Info.class, View.Public.Balance.class})
+    private Long aggregatedBalance;
 
     public Customer() {
     }
@@ -86,5 +98,13 @@ public class Customer {
 
     public void setFinancialProducts(List<FinancialProduct> financialProducts) {
         this.financialProducts = financialProducts;
+    }
+
+    public Long getAggregatedBalance() {
+        return aggregatedBalance;
+    }
+
+    public void setAggregatedBalance(Long aggregatedBalance) {
+        this.aggregatedBalance = aggregatedBalance;
     }
 }
