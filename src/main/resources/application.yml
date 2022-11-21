@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:management
+    username: user
+    password: password
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: at.wold.dependencies.CustomH2Dialect
+    defer-datasource-initialization: true
