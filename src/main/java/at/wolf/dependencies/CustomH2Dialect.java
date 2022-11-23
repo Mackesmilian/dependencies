@@ -1,4 +1,4 @@
-package at.wold.dependencies;
+package at.wolf.dependencies;
 
 import org.hibernate.dialect.H2Dialect;
 

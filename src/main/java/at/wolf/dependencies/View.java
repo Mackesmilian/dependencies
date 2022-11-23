@@ -1,4 +1,4 @@
-package at.wold.dependencies;
+package at.wolf.dependencies;
 
 public class View {
     public interface Public {

@@ -1,6 +1,6 @@
-package at.wold.dependencies.repository;
+package at.wolf.dependencies.repository;
 
-import at.wold.dependencies.entity.Customer;
+import at.wolf.dependencies.entity.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

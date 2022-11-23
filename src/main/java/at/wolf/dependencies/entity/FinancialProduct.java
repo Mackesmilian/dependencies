@@ -1,4 +1,4 @@
-package at.wold.dependencies.entity;
+package at.wolf.dependencies.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

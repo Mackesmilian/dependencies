@@ -1,6 +1,6 @@
-package at.wold.dependencies.entity;
+package at.wolf.dependencies.entity;
 
-import at.wold.dependencies.View;
+import at.wolf.dependencies.View;
 import com.fasterxml.jackson.annotation.JsonView;
 import org.hibernate.annotations.Formula;
 
@@ -17,6 +17,7 @@ public class Customer {
     @JsonView(View.Public.Info.class)
     private String address;
     private LocalDate dateOfBirth;
+    @JsonView(View.Public.Info.class)
     private String email;
     @JsonView(View.Public.Info.class)
     private Boolean statusFl;
@@ -29,7 +30,7 @@ public class Customer {
 
     @Formula(value = "select sum(f.balance) from customerFinancialProduct f where f.customerId = " +
             "id")
-    @JsonView({View.Public.Info.class, View.Public.Balance.class})
+    @JsonView(View.Public.Balance.class)
     private Long aggregatedBalance;
 
     public Customer() {

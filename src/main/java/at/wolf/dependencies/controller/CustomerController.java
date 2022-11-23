@@ -1,8 +1,8 @@
-package at.wold.dependencies.controller;
+package at.wolf.dependencies.controller;
 
-import at.wold.dependencies.View;
-import at.wold.dependencies.entity.Customer;
-import at.wold.dependencies.service.CustomerService;
+import at.wolf.dependencies.View;
+import at.wolf.dependencies.entity.Customer;
+import at.wolf.dependencies.service.CustomerService;
 import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

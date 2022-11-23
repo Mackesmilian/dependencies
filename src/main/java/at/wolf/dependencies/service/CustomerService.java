@@ -1,7 +1,7 @@
-package at.wold.dependencies.service;
+package at.wolf.dependencies.service;
 
-import at.wold.dependencies.entity.Customer;
-import at.wold.dependencies.repository.CustomerRepository;
+import at.wolf.dependencies.entity.Customer;
+import at.wolf.dependencies.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

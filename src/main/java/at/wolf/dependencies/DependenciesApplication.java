@@ -1,4 +1,4 @@
-package at.wold.dependencies;
+package at.wolf.dependencies;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

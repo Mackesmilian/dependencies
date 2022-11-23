@@ -2,14 +2,22 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '2.7.5'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+	id "org.springframework.cloud.contract" version "3.1.5"
 }
 
-group = 'at.wold'
-version = '0.0.1-SNAPSHOT'
+group = 'at.wolf'
+version = '1'
 sourceCompatibility = '17'
 
 repositories {
 	mavenCentral()
+	mavenLocal()
+}
+
+ext {
+	set('springCloudContractVersion', "3.1.5")
+	contractsDir = file("mappings")
+	stubsOutputDirRoot = file("${project.buildDir}/production/dependencies-stubs/")
 }
 
 dependencies {
@@ -18,8 +26,20 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'com.h2database:h2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.cloud:spring-cloud-starter-contract-verifier'
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-contract-dependencies:${springCloudContractVersion}"
+	}
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+contracts {
+	testFramework = "JUNIT5"
+	baseClassForTests = 'at.wolf.dependencies.BaseTest'
 }
